@@ -65,6 +65,37 @@ We've included the `ABI.js` file – this is basically the instruction manual fo
 - ✍️ Any 3 members must approve it before it goes through
 - 🎉 When the 3rd person clicks approve, boom – money transfers instantly!
 
+---
+
+## 🚀 How to Run & Use
+
+### 🏠 Local Development
+1. **Clone the Repo**:
+   ```bash
+   git clone https://github.com/DarsanV/MultiSig_wallet.git
+   cd MultiSig_wallet
+   ```
+2. **Launch a Local Server**:
+   Since the app uses JavaScript to load configuration files (like `ABI.js`), you must serve it through a web server.
+   ```bash
+   # Using npx (easiest if you have Node.js)
+   npx -y serve .
+   ```
+3. **Open in Browser**:
+   Navigate to `http://localhost:3000` (or the port specified by your server).
+
+### 🔗 Connecting to the Blockchain
+1. **MetaMask**: Ensure you have the MetaMask extension installed and set to your target network (Mainnet, Sepolia, or local Ganache/Hardhat).
+2. **Contract Address**: In the app's initial screen, enter the address of your deployed `MultiSigWallet` contract.
+3. **Connect**: Click **Connect Wallet** to link your address.
+
+### 💸 Managing Transactions
+- **Submit**: Use the "Submit Transaction" card to propose a transfer.
+- **Approve**: Other owners can see pending proposals in the "Proposed Transactions" list and click **Approve**.
+- **Execution**: The contract automatically executes the transfer as soon as the `requiredApprovals` threshold is reached!
+
+---
+
 ## Safety Notes ⚠️
 
 This is a basic implementation for learning! If you're deploying to mainnet with real money:
