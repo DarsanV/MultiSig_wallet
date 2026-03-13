@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiSig Wallet | 🔐 Smart & Secure</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Ethers.js -->
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+</head>
+<body>
+    <div class="container fade-in">
+        <header>
+            <div class="logo">
+                <span class="logo-emoji">🔐</span>
+                <span>MultiSig Wallet</span>
+            </div>
+            <button id="connectWallet" class="wallet-btn">Connect Wallet</button>
+        </header>
+
+        <!-- Connection Screen -->
+        <div id="connectionOverlay" class="glass-card fade-in">
+            <h2>🌍 Connect to Your Contract</h2>
+            <div class="form-group">
+                <label for="contractAddress">Wallet Contract Address</label>
+                <input type="text" id="contractAddress" placeholder="0x..." autocomplete="off">
+            </div>
+            <button id="startDApp" class="submit-btn">Continue to Dashboard</button>
+        </div>
+
+        <!-- Dashboard Screen (Hidden initially) -->
+        <div id="dashboard" class="hidden">
+            <div class="grid-2">
+                <!-- Left Column: Stats and Info -->
+                <div class="glass-card">
+                    <h2>📊 Wallet Overview</h2>
+                    <div class="info-item">
+                        <div class="info-label">Balance</div>
+                        <div class="info-value" id="walletBalance">0.00 ETH</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Current Owner</div>
+                        <div class="info-value" id="currentAccount">Not connected</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Required Approvals</div>
+                        <div class="info-value" id="approvalsNeeded">...</div>
+                    </div>
+                    
+                    <h2 style="margin-top: 2rem;">👥 Owners</h2>
+                    <div id="ownerList" class="info-value" style="font-size: 0.8rem;">...</div>
+                </div>
+
+                <!-- Right Column: Create Tx Form -->
+                <div class="glass-card">
+                    <h2>📝 Submit Transaction</h2>
+                    <div class="form-group">
+                        <label for="txTo">Recipient Address</label>
+                        <input type="text" id="txTo" placeholder="0x...">
+                    </div>
+                    <div class="form-group">
+                        <label for="txValue">Value (ETH)</label>
+                        <input type="number" step="0.0001" id="txValue" placeholder="0.0">
+                    </div>
+                    <button id="submitTx" class="submit-btn">Submit Proposal</button>
+                    <div id="submitStatus" style="margin-top: 1rem; font-size: 0.8rem;"></div>
+                </div>
+            </div>
+
+            <!-- Full Width Column: Transactions -->
+            <div class="glass-card">
+                <h2>📋 Proposed Transactions</h2>
+                <div class="tx-list" id="transactionList">
+                    <!-- Transactions go here -->
+                    <div style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                        No transactions found yet.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
